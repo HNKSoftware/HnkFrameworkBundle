@@ -34,7 +34,7 @@ trait SeoTrait
      * @param string $subTitle
      * @return SeoPage
      */
-    public function setHeader($title, $description = '', $keywords = '', $subTitle = ''): SeoPage
+    public function setHeader($title, $description = '', $keywords = '', $subTitle = ''): void
     {
         $this->getSeoManager()->getSeoPage()
             ->setTitle($title)
