@@ -2,6 +2,7 @@
 
 namespace Hnk\HnkFrameworkBundle\Controller;
 
+use Hnk\HnkFrameworkBundle\Seo\Breadcrumb;
 use Hnk\HnkFrameworkBundle\Seo\SeoManager;
 use Hnk\HnkFrameworkBundle\Seo\SeoPage;
 
@@ -46,12 +47,13 @@ trait SeoTrait
 
     /**
      * @param string $name
-     * @param string $url
+     * @param string|null $route
+     * @param array $routeParameters
      * @return SeoPage
      */
-    public function addBreadcrumb($name, $url = ''): SeoPage
+    public function addBreadcrumb(string $name, ?string $route = null, array $routeParameters = []): SeoPage
     {
         return $this->getSeoManager()->getSeoPage()
-            ->addBreadcrumb($name, $url);
+            ->addBreadcrumb(new Breadcrumb($name, $route, $routeParameters));
     }
 }

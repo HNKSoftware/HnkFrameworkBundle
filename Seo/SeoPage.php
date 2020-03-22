@@ -132,15 +132,22 @@ class SeoPage
     }
 
     /**
-     * @param string $name
-     * @param string $url
+     * @param BreadcrumbInterface $breadcrumb
      * @return SeoPage
      */
-    public function addBreadcrumb(string $name, string $url = ''): self
+    public function addBreadcrumb(BreadcrumbInterface $breadcrumb): self
     {
-        $this->breadcrumbs[] = ['name' => $name, 'url' => $url];
+        $this->breadcrumbs[] = $breadcrumb;
 
         return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasBreadcrumbs(): bool
+    {
+        return !empty($this->breadcrumbs);
     }
 
     /**
