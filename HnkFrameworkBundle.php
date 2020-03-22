@@ -1,6 +1,6 @@
 <?php
 
-namespace Hnk\HnkUtilBundle;
+namespace Hnk\HnkFrameworkBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
