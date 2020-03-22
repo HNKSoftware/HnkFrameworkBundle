@@ -31,7 +31,11 @@ trait NotificationTrait
      */
     public function redirectWithSuccess(string $message, string $route, array $routeParameters = []): RedirectResponse
     {
-        return $this->redirectWithFlash($message, $route, $routeParameters, Notification::TYPE_SUCCESS);
+        return $this->redirectWithFlash(
+            $message,
+            $this->generateUrl($route, $routeParameters),
+            Notification::TYPE_SUCCESS
+        );
     }
 
     /**
@@ -44,28 +48,30 @@ trait NotificationTrait
      */
     public function redirectWithError(string $message, string $route, array $routeParameters = []): RedirectResponse
     {
-        return $this->redirectWithFlash($message, $route, $routeParameters, Notification::TYPE_SUCCESS);
+        return $this->redirectWithFlash(
+            $message,
+            $this->generateUrl($route, $routeParameters),
+            Notification::TYPE_SUCCESS
+        );
     }
 
     /**
      * Creates new flash message and returns RedirectResponse
      *
      * @param string $message
-     * @param string $route
-     * @param array $routeParameters
+     * @param string $url
      * @param string $notificationType
      *
      * @return RedirectResponse
      */
     public function redirectWithFlash(
         string $message,
-        string $route,
-        array $routeParameters = [],
+        string $url,
         string $notificationType = Notification::TYPE_INFO
     ): RedirectResponse {
         $this->addFlash($notificationType, $message);
 
-        return $this->redirect($this->generateUrl($route, $routeParameters));
+        return $this->redirect($url);
     }
 
     /**
