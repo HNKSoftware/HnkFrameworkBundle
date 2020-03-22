@@ -8,7 +8,8 @@ use Hnk\HnkFrameworkBundle\Seo\SeoPage;
 trait SeoTrait
 {
     /**
-     *
+     * Returns services required for Seo module to work
+     * Use this list in getSubscribedServices method in controller
      *
      * @return array
      */

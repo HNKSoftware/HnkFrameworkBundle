@@ -10,8 +10,20 @@ services:
 
     Hnk\HnkFrameworkBundle\Seo\SeoManager: '@hnk_framework.seo_manager'
 
+    hnk_framework.notification_manager:
+        class: Hnk\HnkFrameworkBundle\Notification\SessionAwareNotificationManager
+        arguments: ["@session"]
+
+    Hnk\HnkFrameworkBundle\Notification\SessionAwareNotificationManager: '@hnk_framework.notification_manager'
+
     hnk_framework.twig.seo_extension:
         class: Hnk\HnkFrameworkBundle\Twig\SeoExtension
         arguments: ["@hnk_framework.seo_manager"]
+        tags:
+            - { name: twig.extension }
+
+    hnk_framework.twig.notification_extension:
+        class: Hnk\HnkFrameworkBundle\Twig\NotificationExtension
+        arguments: ["@hnk_framework.notification_manager"]
         tags:
             - { name: twig.extension }
