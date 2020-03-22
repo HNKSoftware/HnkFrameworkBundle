@@ -4,8 +4,11 @@ parameters:
 
 services:
     hnk_framework.seo_manager:
+        public: true
         class: Hnk\HnkFrameworkBundle\Seo\SeoManager
         arguments: ["%seo.title%"]
+
+    Hnk\HnkFrameworkBundle\Seo\SeoManager: '@hnk_framework.seo_manager'
 
     hnk_framework.twig.seo_extension:
         class: Hnk\HnkFrameworkBundle\Twig\SeoExtension
