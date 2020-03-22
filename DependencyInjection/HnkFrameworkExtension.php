@@ -25,6 +25,10 @@ class HnkFrameworkExtension extends Extension
 
     private function updateSeoManagerConfig(ContainerBuilder $container, array $config)
     {
+        if (!isset($config["seo"], $config["seo"]["title"])) {
+            return;
+        }
+
         $definition = $container->getDefinition("hnk_framework.seo_manager");
         $definition->replaceArgument(0, $config["seo"]["title"]);
     }

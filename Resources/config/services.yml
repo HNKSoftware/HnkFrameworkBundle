@@ -1,11 +1,14 @@
-services:
+parameters:
+    seo:
+        title: "HNK Framework"
 
+services:
     hnk_framework.seo_manager:
-        class: Hnk\FrameworkBundle\Seo\SeoManager
-        arguments: ['HnkFramework']
+        class: Hnk\HnkFrameworkBundle\Seo\SeoManager
+        arguments: ["%seo.title%"]
 
     hnk_framework.twig.seo_extension:
-        class: Hnk\FrameworkBundle\Twig\SeoExtension
+        class: Hnk\HnkFrameworkBundle\Twig\SeoExtension
         arguments: ["@hnk_framework.seo_manager"]
         tags:
             - { name: twig.extension }
