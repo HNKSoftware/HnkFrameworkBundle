@@ -24,44 +24,48 @@ trait NotificationTrait
     /**
      * Creates new flash message with type = 'success' and returns RedirectResponse
      *
-     * @param string $url
      * @param string $message
+     * @param string $route
+     * @param array $routeParameters
      * @return RedirectResponse
      */
-    public function redirectWithSuccess(string $url, string $message): RedirectResponse
+    public function redirectWithSuccess(string $message, string $route, array $routeParameters = []): RedirectResponse
     {
-        return $this->redirectWithFlash($url, $message, Notification::TYPE_SUCCESS);
+        return $this->redirectWithFlash($message, $route, $routeParameters, Notification::TYPE_SUCCESS);
     }
 
     /**
      * Creates new flash message with type = 'error' and returns RedirectResponse
      *
-     * @param string $url
      * @param string $message
+     * @param string $route
+     * @param array $routeParameters
      * @return RedirectResponse
      */
-    public function redirectWithError(string $url, string $message): RedirectResponse
+    public function redirectWithError(string $message, string $route, array $routeParameters = []): RedirectResponse
     {
-        return $this->redirectWithFlash($url, $message, Notification::TYPE_SUCCESS);
+        return $this->redirectWithFlash($message, $route, $routeParameters, Notification::TYPE_SUCCESS);
     }
 
     /**
      * Creates new flash message and returns RedirectResponse
      *
-     * @param string $url
      * @param string $message
+     * @param string $route
+     * @param array $routeParameters
      * @param string $notificationType
      *
      * @return RedirectResponse
      */
     public function redirectWithFlash(
-        string $url,
-        string $message = '',
+        string $message,
+        string $route,
+        array $routeParameters = [],
         string $notificationType = Notification::TYPE_INFO
     ): RedirectResponse {
         $this->addFlash($notificationType, $message);
 
-        return $this->redirect($url);
+        return $this->redirect($this->generateUrl($route, $routeParameters));
     }
 
     /**
