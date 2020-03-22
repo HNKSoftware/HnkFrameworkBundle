@@ -1,0 +1,11 @@
+services:
+
+    hnk_framework.seo_manager:
+        class: Hnk\FrameworkBundle\Seo\SeoManager
+        arguments: ['HnkFramework']
+
+    hnk_framework.twig.seo_extension:
+        class: Hnk\FrameworkBundle\Twig\SeoExtension
+        arguments: ["@hnk_framework.seo_manager"]
+        tags:
+            - { name: twig.extension }
