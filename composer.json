@@ -1,0 +1,29 @@
+{
+  "name" : "hnk/framework-bundle",
+  "description" : "HNK framework bundle",
+  "version": "0.1.0",
+  "type" : "symfony-bundle",
+  "authors" : [{
+    "name" : "HNKSoftware",
+    "email" : "hnksoftware@gmail.com"
+  }],
+  "keywords" : [
+    "hnk framework bundle"
+  ],
+  "license" : [
+    "MIT"
+  ],
+  "require" : {
+  },
+  "autoload" : {
+    "psr-4" : {
+      "Hnk\\HnkFrameworkBundle\\" : ""
+    },
+    "exclude-from-classmap": [ "/Tests/" ]
+  },
+  "extra" : {
+    "branch-alias" : {
+      "dev-master" : "0.1-dev"
+    }
+  }
+}
