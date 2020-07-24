@@ -24,16 +24,15 @@ trait NotificationTrait
     /**
      * Creates new flash message with type = 'success' and returns RedirectResponse
      *
+     * @param string $url
      * @param string $message
-     * @param string $route
-     * @param array $routeParameters
      * @return RedirectResponse
      */
-    public function redirectWithSuccess(string $message, string $route, array $routeParameters = []): RedirectResponse
+    public function redirectWithSuccess(string $url, string $message): RedirectResponse
     {
         return $this->redirectWithFlash(
+            $url,
             $message,
-            $this->generateUrl($route, $routeParameters),
             Notification::TYPE_SUCCESS
         );
     }
@@ -41,16 +40,15 @@ trait NotificationTrait
     /**
      * Creates new flash message with type = 'error' and returns RedirectResponse
      *
+     * @param string $url
      * @param string $message
-     * @param string $route
-     * @param array $routeParameters
      * @return RedirectResponse
      */
-    public function redirectWithError(string $message, string $route, array $routeParameters = []): RedirectResponse
+    public function redirectWithError(string $url, string $message): RedirectResponse
     {
         return $this->redirectWithFlash(
+            $url,
             $message,
-            $this->generateUrl($route, $routeParameters),
             Notification::TYPE_SUCCESS
         );
     }
@@ -58,15 +56,15 @@ trait NotificationTrait
     /**
      * Creates new flash message and returns RedirectResponse
      *
-     * @param string $message
      * @param string $url
+     * @param string $message
      * @param string $notificationType
      *
      * @return RedirectResponse
      */
     public function redirectWithFlash(
-        string $message,
         string $url,
+        string $message,
         string $notificationType = Notification::TYPE_INFO
     ): RedirectResponse {
         $this->addFlash($notificationType, $message);
