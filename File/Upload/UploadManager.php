@@ -15,7 +15,7 @@ class UploadManager {
      *
      * @var array
      */
-    private $fileDirectories;
+    protected $fileDirectories;
 
     /**
      * Array with entity class names as keys and subdirectory names as values
@@ -28,7 +28,7 @@ class UploadManager {
      *
      * @var array
      */
-    private $entityFileSubdirectories;
+    protected $entityFileSubdirectories;
 
     public function __construct(
         array $fileDirectories,
