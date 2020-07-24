@@ -8,7 +8,7 @@ use Hnk\HnkFrameworkBundle\Exception\HnkException;
 
 class DataRegistry
 {
-    private $data = [];
+    protected $data = [];
 
     /**
      * Sets value in data registry
