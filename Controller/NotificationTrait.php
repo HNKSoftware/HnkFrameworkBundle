@@ -49,7 +49,7 @@ trait NotificationTrait
         return $this->redirectWithFlash(
             $url,
             $message,
-            Notification::TYPE_SUCCESS
+            Notification::TYPE_ERROR
         );
     }
 
